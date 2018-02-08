@@ -29,10 +29,7 @@ if True:
         imagebase=input('Image >')
         image=imagebase.replace(' ','_')
         imageurl='https://' + server + '/w/images/' + image
-        imgfile=req.get(imageurl)
-        if imgfile.status_code > 400:
-            continue
         toname=input('To Filename >')
         page=input('File Page >')
         page=page+"<!-- Script upload: if something is wrong, please call Apple502j -->"
-        wiki.upload(imgfile.content,toname,comment=page)
+        wiki.upload(imageurl,toname,comment=page)

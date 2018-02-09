@@ -15,22 +15,24 @@
 import mw_api_client as mw
 import requests as req
 import getpass
+from io import BytesIO
 
-if True:
+if True: #what's the use?
     server=input('Server >')
     server2=input('To Server >')
     username=input('Username >')
     password=getpass.getpass('Password >')
     wiki=mw.Wiki('https://' + server2 + '/w/api.php','ImageTransport by Apple502j python3-requests')
     wiki.login(username,password)
-    while True:
+    while True: #why forever?
         imagebase=input('Image >')
         image=imagebase.replace(' ','_')
         imageurl='https://' + server + '/w/images/' + image
         imgfile=req.get(imageurl)
         if imgfile.status_code > 400:
             continue
+        imgfile = BytesIO(bytes(imgfile.content))
         toname=input('To Filename >')
         page=input('File Page >')
         page=page+"<!-- Script upload: if something is wrong, please call Apple502j -->"
-wiki.upload(imgfile.content,toname,comment=page)
+        wiki.upload(imgfile,toname,comment=page)

@@ -17,6 +17,7 @@
 import mw_api_client as mw
 import requests as req
 import getpass
+from io import StringIO
 
 if True:
     server=input('Server >')
@@ -35,4 +36,5 @@ if True:
         toname=input('To Filename >')
         page=input('File Page >')
         page=page+"<!-- Script upload: if something is wrong, please call Apple502j -->"
-        wiki.upload(imgfile.content,toname,comment=page)
+        contents = StringIO(imgfile.content)
+        wiki.upload(contents,toname,comment=page)

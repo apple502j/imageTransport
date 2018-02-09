@@ -1,23 +1,20 @@
 #!/usr/bin/python3
 '''
-    Copyright (C) 2018 apple502j and kenny2scratch All rights reserved.
+    Copyright (C) 2018 apple502j All rights reserved.
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 '''
 import mw_api_client as mw
 import requests as req
 import getpass
-from io import StringIO
 
 if True:
     server=input('Server >')
@@ -36,5 +33,4 @@ if True:
         toname=input('To Filename >')
         page=input('File Page >')
         page=page+"<!-- Script upload: if something is wrong, please call Apple502j -->"
-        contents = StringIO(imgfile.content)
-        wiki.upload(contents,toname,comment=page)
+wiki.upload(imgfile.content,toname,comment=page)

@@ -1,5 +1,4 @@
-
-
+#! /usr/bin/python3
 import tkinter as tki
 import tkinter.messagebox as tkm
 import requests as req
@@ -24,6 +23,7 @@ def login(ev):
     passwd=boxPassword.get()
     w=mw.Wiki("https://"+sv+"/w/api.php",USERAGENT)
     w.login(un,passwd)
+    tkm.showinfo('Done','Login done')
 
 def upload(ev):
     global w
@@ -91,6 +91,4 @@ if True:
 
     btnUpload=button(upload,10,"Upload",250,50)
 
-
-if __name__=="__main__":
-    root.mainloop()
+root.mainloop()
